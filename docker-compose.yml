@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  tomcat:
+    image: tomcat:8-jre8-alpine
+    ports:
+      - 8888:8080
+    volumes:
+      - ./target/cluster-diag.war:/usr/local/tomcat/webapps/cluster-diag.war
+    environment:
+      - DUMMY=NOT_ME!
+      - SECRET=INFORMATION
+
+  wildfly:
+    image: jboss/wildfly
+    ports:
+      - 8889:8080
+      - 8890:9990
+    command: >
+      sh -c "/opt/jboss/wildfly/bin/add-user.sh -u wildfly -p wildfly -r ManagementRealm
+      && /opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0"
+    volumes:
+      - ./target/cluster-diag.war:/opt/jboss/wildfly/standalone/deployments/cluster-diag.war
+    environment:
+      - DUMMY=DEFINITELY_NOT_ME!
+      - SECRET=STUFF
