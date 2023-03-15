@@ -3,18 +3,4 @@
 <web-app>
   <display-name>Diagnostic Web Application</display-name>
   <distributable/>
-  <servlet>
-    <servlet-name>jsp</servlet-name>
-    <servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
-    <!-- added params -->
-    <init-param>
-      <param-name>compilerSourceVM</param-name>
-      <param-value>1.8</param-value>
-    </init-param>
-    <init-param>
-      <param-name>compilerTargetVM</param-name>
-      <param-value>1.8</param-value>
-    </init-param>
-    <!-- end added params -->
-  </servlet>
 </web-app>
