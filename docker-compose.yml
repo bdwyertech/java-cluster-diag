@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   # build:
   #   image: maven:3-eclipse-temurin-17-alpine
@@ -9,7 +7,7 @@ services:
   #   volumes:
   #     - .:/app
   tomcat:
-    image: tomcat:8-jre8-alpine
+    image: tomcat:10.1-jdk17
     ports:
       # http://localhost:8888/cluster-diag/
       - 8888:8080
@@ -20,7 +18,7 @@ services:
       - SECRET=INFORMATION
 
   wildfly:
-    image: quay.io/wildfly/wildfly:27.0.1.Final-jdk17
+    image: quay.io/wildfly/wildfly:39.0.1.Final-2-jdk17
     ports:
       # http://localhost:8889/cluster-diag/
       - 8889:8080
